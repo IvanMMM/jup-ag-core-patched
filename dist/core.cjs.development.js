@@ -8652,7 +8652,7 @@ class Jupiter {
     onlyDirectRoutes,
     swapMode = exports.SwapMode.ExactIn,
     filterTopNResult
-  }) {
+  }, asJson = false) {
     const inputMintString = inputMint.toBase58();
     const outputMintString = outputMint.toBase58(); // Platform fee can only be applied when fee account exists
 
@@ -8697,6 +8697,23 @@ class Jupiter {
     }
 
     try {
+      if (asJson) {
+        return {
+          routeJson: {
+            inputRouteSegment: Array.from(inputRouteSegment),
+            inputMint: inputMint.toBase58(),
+            outputMint: outputMint.toBase58(),
+            amount,
+            //getDepositAndFeeForRoute: this.getDepositAndFeesForUser,
+            onlyDirectRoutes,
+            slippage,
+            platformFeeBps,
+            filterTopNResult,
+            swapMode
+          },
+          cached: !(forceFetch || shouldBustCache)
+        }
+      }
       const routesInfos = processInputRouteSegmentToRoutesInfos({
         inputRouteSegment,
         inputMint,
@@ -8946,4 +8963,5 @@ exports.getPlatformFeeAccounts = getPlatformFeeAccounts;
 exports.getRouteInfoUniqueId = getRouteInfoUniqueId;
 exports.getSaberWrappedDecimalsAmms = getSaberWrappedDecimalsAmms;
 exports.transactionSenderAndConfirmationWaiter = transactionSenderAndConfirmationWaiter;
+exports.processInputRouteSegmentToRoutesInfos = processInputRouteSegmentToRoutesInfos;
 //# sourceMappingURL=core.cjs.development.js.map
