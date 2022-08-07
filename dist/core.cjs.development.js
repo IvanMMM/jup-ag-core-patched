@@ -8651,8 +8651,9 @@ class Jupiter {
     forceFetch,
     onlyDirectRoutes,
     swapMode = exports.SwapMode.ExactIn,
-    filterTopNResult
-  }, asJson = false) {
+    filterTopNResult,
+    asJson = false
+  }) {
     const inputMintString = inputMint.toBase58();
     const outputMintString = outputMint.toBase58(); // Platform fee can only be applied when fee account exists
 
