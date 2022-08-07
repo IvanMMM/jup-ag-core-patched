@@ -8704,7 +8704,7 @@ class Jupiter {
             inputRouteSegment: Array.from(inputRouteSegment),
             inputMint: inputMint.toBase58(),
             outputMint: outputMint.toBase58(),
-            amount,
+            amount: JSBI.toNumber(amount),
             //getDepositAndFeeForRoute: this.getDepositAndFeesForUser,
             onlyDirectRoutes,
             slippage,
