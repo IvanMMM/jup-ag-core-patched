@@ -112,7 +112,7 @@ export declare class Jupiter {
         serumOpenOrdersPromise?: Promise<SerumOpenOrdersMap> | undefined;
     }) => Promise<import("./routes").TransactionFeeInfo>;
     private getDepositAndFeesForUser;
-    computeRoutes({ inputMint, outputMint, amount, slippage, feeBps, forceFetch, onlyDirectRoutes, swapMode, filterTopNResult, }: {
+    computeRoutes({ inputMint, outputMint, amount, slippage, feeBps, forceFetch, onlyDirectRoutes, swapMode, filterTopNResult, asJson }: {
         inputMint: PublicKey;
         outputMint: PublicKey;
         amount: JSBI;
@@ -125,6 +125,7 @@ export declare class Jupiter {
          * filter how many top individual route to be used to compared
          */
         filterTopNResult?: number;
+        asJson?: boolean
     }): Promise<{
         routesInfos: RouteInfo[];
         cached: boolean;
