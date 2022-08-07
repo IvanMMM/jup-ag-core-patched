@@ -1,0 +1,90 @@
+{
+  "version": "2.0.0-beta.2",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "dts lint"
+    }
+  },
+  "name": "@jup-ag/core",
+  "author": "zhengyutay",
+  "module": "dist/core.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/core.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/core.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "~6.0.4",
+    "@tsconfig/recommended": "^1.0.1",
+    "dts-cli": "1.5.1",
+    "husky": "~7.0.4",
+    "size-limit": "~6.0.4",
+    "tslib": "^2.3.1",
+    "typescript": "4.7.3",
+    "@types/node": "^16",
+    "@types/bn.js": "^5.1.0",
+    "@solana/wallet-adapter-base": "~0.9.5",
+    "@solana/buffer-layout": "4.0.0",
+    "bs58": "^4.0.1",
+    "@types/bs58": "^4.0.1",
+    "@types/promise-retry": "^1.1.3",
+    "rollup-plugin-uglify": "~6.0.4",
+    "@saberhq/solana-contrib": "1.13.6",
+    "@saberhq/saber-periphery": "~1.1.2",
+    "got": "~11.8.2",
+    "ts-node": "^10.0.0",
+    "@saberhq/token-utils": "1.13.6",
+    "vitest": "~0.17.0",
+    "vite": "~2.9.13",
+    "babel-plugin-transform-remove-console": "~6.9.4"
+  },
+  "peerDependencies": {
+    "@solana/web3.js": ">=1.42.0",
+    "@solana/buffer-layout": "^3 || ^4"
+  },
+  "dependencies": {
+    "@project-serum/serum": "0.13.65",
+    "@solana/spl-token": "0.1.8",
+    "decimal.js": "10.3.1",
+    "bn.js": "5.2.1",
+    "@project-serum/anchor": "0.24.2",
+    "cross-fetch": "3.1.5",
+    "@saberhq/stableswap-sdk": "1.13.6",
+    "promise-retry": "2.0.1",
+    "jsbi": "4.3.0",
+    "@jup-ag/math": "2.0.0-beta.2",
+    "@mercurial-finance/optimist": "0.1.5",
+    "@jup-ag/lifinity-sdk": "0.1.72",
+    "@jup-ag/crema-sdk": "2.0.7",
+    "@jup-ag/cykura-sdk-core": "0.1.8",
+    "@jup-ag/cykura-sdk": "0.1.25",
+    "@jup-ag/whirlpool-sdk": "0.1.1"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
+  "scripts": {
+    "start": "dts watch --noClean",
+    "build": "RELEASE=true dts build",
+    "test": "vitest",
+    "lint": "dts lint",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "generate-saber-add-decimals": "ts-node --files --project tsconfig.json cli/generateSaberAddDecimals.ts"
+  },
+  "readme": "# Jupiter Aggregator Core typescript library\n\n![1*cXNgzu0Pvj4HwOLw4Akwqg](https://user-images.githubusercontent.com/34560707/145749257-e48cb199-521b-476e-9d81-f79bb45ef834.png)\n\n<p align=\"center\">\n  <a href=\"https://jup.ag\">Jupiter Aggregator (jup.ag)</a>\n  <br/>\n  The best swap aggregator on Solana.  Built for smart traders who like money.\n</p>\n<br/>\n\nThis repo is Jupiter Core SDK.\n\n\n## Example\nFor Node, or build your own lib, use [Jupiter Core Example](https://github.com/mercurial-finance/jupiter-core-example)\n## Integrate with React instead?\nThe quickest way to integrate Jupiter with your UI, use [Jupiter React Hook instead](https://www.npmjs.com/package/@jup-ag/react-hook)\n## React Native?\nCheckout [Jupiter React Native Example](https://github.com/mercurial-finance/jupiter-react-native)\n\n\n# Installation\n\nYarn\n```\nyarn add @jup-ag/core\n```\n\nNPM\n```\nnpm install @jup-ag/core\n```\n\n<br/>\n<hr/>\n<br/>\n\n### Jupiter.load()\n```\nInitialize and load Jupiter instances\n```\n\n### jupiter.getRouteMap()\n```\nGet routeMap, which maps each tokenMint and their respective tokenMints that are swappable\n```\n\n### jupiter.computeRoutes()\n```\nRequest Jupiter to compute the requested inputToken and outputToken, to query possible pairs, routes, amounts, slippage and more information.\n```\n"
+}
